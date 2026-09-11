@@ -184,13 +184,13 @@ class OpenFinanceValidator:
             discrepancias = []
 
             # 1. TELEFONO - Solo si AMBAS bases lo tienen
-            telefono_skandia = cliente_data.get("telefono", "").strip()
+            telefono_skandia = (cliente_data.get("telefono") or "").strip()
             # Open Finance no tiene teléfono, así que no mostrar discrepancia
             # Mantener los datos de Skandia como está
 
             # 2. CORREO ELECTRONICO - Solo si AMBAS bases lo tienen
-            email_skandia = cliente_data.get("email", "").strip()
-            email_of = datos_of.get("email", "").strip()
+            email_skandia = (cliente_data.get("email") or "").strip()
+            email_of = (datos_of.get("email") or "").strip()
 
             # Solo mostrar discrepancia si AMBAS bases tienen correo y son diferentes
             if email_skandia and email_of and email_skandia != email_of:
@@ -204,7 +204,7 @@ class OpenFinanceValidator:
                 })
 
             # 3. DIRECCION - Solo si AMBAS bases lo tienen
-            direccion_skandia = cliente_data.get("direccion", "").strip()
+            direccion_skandia = (cliente_data.get("direccion") or "").strip()
             # Open Finance no tiene dirección, así que no mostrar discrepancia
             # Mantener los datos de Skandia como está
 
