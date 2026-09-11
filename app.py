@@ -561,8 +561,9 @@ def actualizar_cliente_datos():
 # ==================== MAIN ====================
 
 if __name__ == "__main__":
-    host = os.getenv("APP_HOST", "localhost")
-    port = int(os.getenv("APP_PORT", 8000))
+    # Railway usa PORT, Heroku usa PORT, local usa APP_PORT
+    host = os.getenv("APP_HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", os.getenv("APP_PORT", 8000)))
 
     print("\n" + "="*60)
     print("SKANDIA META SIMULATOR - Flask Server")
